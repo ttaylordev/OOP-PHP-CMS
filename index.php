@@ -8,6 +8,8 @@
 </head>
 <body>
 
-    
+    <?php include './controller/homePage.php'; ?>
+
+
 </body>
 </html>
