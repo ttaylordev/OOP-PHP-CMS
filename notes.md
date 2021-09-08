@@ -1,6 +1,6 @@
 # Notes
 
-Nested Classes
+## Nested Classes
 
 - I could use namespaces to achieve similar results, but stick to one per file as to not gum up the autoloader.
 - I could use json_encode(array) to achieve a nested JSON object, but that's not exactly what I'm looking for, unless I was using a document database instead of mysql.
@@ -76,3 +76,26 @@ array( "client"=> array(
 )
 
 ```
+
+## active record / ORM
+
+Object relational mapping
+>Laravel Eloquent library is a popular example.
+
+ORM is a bit of an anti-pattern, breaking several OOP principles like the single-responsibility principle.
+
+Two popular styles:
+
+1. Data Mapper
+2. Active Record
+
+I am using Active Record
+
+- storing a virtual database that maps to an object within our code.
+- fills out the objects to use within the code based on available data within the database
+- allows me to work with data in an object oriented manner
+- handles the SQL, building the queries from array data passed to the function.
+
+A data mapper will be blind to database manipulation, which is done in a separate service, like an entity manager.
+A good example of a data mapper with a very clean approach is Doctrine
+> <https://symfony.com/doc/current/doctrine.html>

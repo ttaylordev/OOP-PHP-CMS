@@ -17,7 +17,7 @@
 ?>
   
 <?php
-    // router
+    // router instance
     $action = $_GET['seo_name'] ?? 'home';
 
     $dbh = DbConnection::getInstance();
@@ -35,3 +35,5 @@
         $controller->setEntityId($router->entity_id);
         $controller->runAction($action);
     }
+
+    var_dump($router);
