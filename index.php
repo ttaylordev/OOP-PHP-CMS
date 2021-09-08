@@ -1,15 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<?php 
+    session_start();
 
-    <?php include './controller/homePage.php'; ?>
+    define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+    define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
 
 
-</body>
-</html>
+    require_once ROOT_PATH . 'src/Controller.php';
+    require_once ROOT_PATH . 'src/Template.php';
+    require_once ROOT_PATH . 'src/DbConnection.php';
+    require_once ROOT_PATH . 'src/Entity.php';
+    require_once ROOT_PATH . 'src/Router.php';
+    require_once ROOT_PATH . 'model/Page.php';
+
+    DbConnection::connect('localhost', 'oop-cms', 'root');
+
+?>
+  
+<?php
+    // router
+    $action = $_GET['seo_name'] ?? 'home';
+
+    $dbh = DbConnection::getInstance();
+    $dbc = $dbh->getConnection();
+
+    $router = new Router($dbc);
+    $router->findBy('pretty_url', $action);
+    $action = $router->action ?? 'default';
+    $moduleName =  ucfirst($router->module) . 'Controller';
+
+    if(file_exists(ROOT_PATH . 'controller/' . $moduleName . '.php')) {
+    
+        include ROOT_PATH . 'controller/' . $moduleName . '.php';
+        $controller = new $moduleName();
+        $controller->setEntityId($router->entity_id);
+        $controller->runAction($action);
+    }
