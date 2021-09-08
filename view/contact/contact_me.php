@@ -5,7 +5,6 @@
 
     <div class="text-center mb-4">
         <h1 class="h3 mb-3 font-weight-normal">
-            <?php echo "content";?>
             <?php echo $pageObj->title;?>
         </h1>
 
