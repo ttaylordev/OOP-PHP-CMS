@@ -49,13 +49,11 @@
       include VIEW_PATH . 'layout/navigation.html'; 
       ?>
 
-        <main role="main" class="container">
-
-            <?php
-            include VIEW_PATH . $template . '.html'; 
-            ?>
-            
-        </main><!-- /.container -->
+      <main role="main" class="container">
+          <?php
+          include VIEW_PATH . $template . '.php'; 
+          ?>
+      </main><!-- /.container -->
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
         <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>

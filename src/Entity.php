@@ -8,17 +8,21 @@ class Entity {
 
     public function findBy($fieldName, $fieldValue){
 
-        $sql = "SELECT * FROM " . $this->tableName . " WHERE " . $fieldName . " = :value";
-        $statement = $this->dbc->prepare($sql);
-        $statement->execute(['value' => $fieldValue]);
-        $data = $statement->fetch();
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE " . $fieldName . " = :value ";
+        $stmt = $this->dbc->prepare($sql);
+        $stmt->execute(['value'=> $fieldValue]);
+        $data = $stmt->fetch();
         $this->setValues($data);
     }
 
     public function setValues($values){
-
-        foreach($this->fields as $fieldName){
-            $this->$fieldName = $values[$fieldName];
+        
+        if($values){
+            foreach($this->fields as $fieldName){
+                $this->$fieldName = $values[$fieldName];
+            } 
+        } else {
+            echo "Warning: Entity.php, setValues(): values not set, or set as false within an Entity instance. <br>" ;
         }
     }
 }

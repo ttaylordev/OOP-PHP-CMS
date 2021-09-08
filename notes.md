@@ -86,7 +86,7 @@ ORM is a bit of an anti-pattern, breaking several OOP principles like the single
 
 Two popular styles:
 
-1. Data Mapper
+1. Data Mapper 
 2. Active Record
 
 I am using Active Record

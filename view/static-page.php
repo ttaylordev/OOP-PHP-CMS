@@ -4,7 +4,9 @@
     </h1>
 
     <p class="lead">
-        <?php echo $pageObj->content; ?>
+        <?php 
+        // var_dump($pageObj);
+        echo $pageObj->content; ?>
     </p>
   </div>
 

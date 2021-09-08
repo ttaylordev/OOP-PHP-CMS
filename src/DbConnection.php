@@ -15,7 +15,7 @@ final class DbConnection {
             fclose($handle);
             $password = $readFile;
             return $password;
-        } else{
+        } else {
             echo "not able to read the file";
         }
     }

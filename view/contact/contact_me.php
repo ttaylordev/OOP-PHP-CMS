@@ -1,9 +1,11 @@
 <form class="form-signin" action="index.php" method="post">
+
     <input type="hidden" name="section" value="contact">
     <input type="hidden" name="action" value="submitContactForm">
 
     <div class="text-center mb-4">
         <h1 class="h3 mb-3 font-weight-normal">
+            <?php echo "content";?>
             <?php echo $pageObj->title;?>
         </h1>
 

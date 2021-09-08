@@ -5,7 +5,7 @@ class PageController extends Controller{
     function defaultAction() {
         
         $dbh = DbConnection::getInstance();
-        $dbc = $dbh->getConnection();
+        $dbc = $dbh::getConnection();
         
         $pageObj = new Page($dbc);
         $pageObj->findBy('id', $this->entityId);
