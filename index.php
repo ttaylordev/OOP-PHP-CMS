@@ -1,4 +1,5 @@
 <?php 
+    declare(strict_types=1);
     session_start();
 
     define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
@@ -37,4 +38,4 @@
     } else {
     
         echo "index.php: moduleName does not exist: " . $moduleName;
-    }
+    }   
